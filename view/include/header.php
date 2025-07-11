@@ -7,12 +7,11 @@
     <title>CINTIA</title>
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>view/bootstrap/css/bootstrap.min.css">
     <script>
-        const base_url = '<?php echo BASE_URL;?>';
+        const base_url = '<?php echo BASE_URL; ?>';
     </script>
 </head>
-
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Logo</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,35 +62,3 @@
             </div>
         </div>
     </nav>
-<!-- INICIO DE CUERPO DE PAGINA -->
-    <div class="container-fluid">
-        <div class="card">
-            <h5 class="card-header">Titulo</h5>
-            <form id="frm_categoria" action="" method="">
-                <div class="card-body">
-                    <div class="mb-3 row">
-                        <label for="nombre" l class="col-sm-2 col-form-label">nombre</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="nombre" name="nombre" required>
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label for="detalle" class="col-sm-2 col-form-label">detalle</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="detalle" name="detalle" required>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-success">Registrar</button>
-                    <button type="reset" class="btn btn-info">Limpiar</button>
-                    <button type="button"  onclick="alerth" class="btn btn-danger">Cancelar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-<!-- FIN DE CUERPO DE PAGINA -->
-    <script src="<?php echo BASE_URL;?>view/function/categoria.js"></script>
-    <script src="<?php echo BASE_URL; ?>view/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</body>
-
-</html>

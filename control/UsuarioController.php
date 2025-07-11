@@ -37,3 +37,26 @@ if ($tipo == "registrar") {
     }
     echo json_encode($arrResponse);
 }
+if ($tipo == "iniciar_sesion") {
+    $nro_identidad = $_POST['username'];
+    $password = $_POST['password'];
+    if ($nro_identidad == "" || $password == "") {
+        $respuesta = array('status' => false, 'msg' => 'Error , campos vacios');
+    }else {
+        $existePersona = $objPersona->existePersona($nro_identidad);
+        if (!$existePersona) {
+            $respuesta = array('status' => false, 'msg' => 'Error , usurio no registrado');
+        }else {
+            $persona = $objPersona->buscarPersonaPorNroIdentidad ($nro_identidad);
+           if (password_verify($password,$persona->password)) {
+            session_start();
+            $_SESSION['ventas_id']= $persona->id;
+            $_SESSION['ventas_usuario']=$persona->razon_social;
+            $_respuesta = array('status' => true, 'msg' => 'Ingresar al sistema');
+           }else {
+            $respuesta = array('status' => false, 'msg' =>'Error, contraseña incorrecta');
+           }
+        }
+    
+    }
+}

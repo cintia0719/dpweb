@@ -1,5 +1,5 @@
 
-function validar_form() {
+function validar_form_categoria() {
     let nombre = document.getElementById("nombre").value;
     let detalle = document.getElementById("detalle").value;
     

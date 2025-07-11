@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,16 +7,18 @@
     <style>
         body {
             font-family: sans-serif;
-            background-color:rgb(192, 23, 141);
+            background-color:rgb(197, 134, 176);
+            background: url('https://i.pinimg.com/736x/a2/a1/4d/a2a14d360d9ccd19b2a73f2f8ced95cb.jpg') ;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
+           
+        
         }
 
         .login-container {
-            background-color: #fff;
+            background-color:rgb(163, 96, 133);
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -71,11 +72,14 @@
             text-align: center;
         }
     </style>
+    <script>
+        const base_url = '<?= BASE_URL; ?>';
+    </script>
 </head>
 <body>
     <div class="login-container">
         <h2>Iniciar Sesión</h2>
-        <form id="loginForm">
+        <form id="frm_login">
             <div class="form-group">
                 <label for="username">Usuario:</label>
                 <input type="text" id="username" name="username" required>
@@ -84,10 +88,12 @@
                 <label for="password">Contraseña:</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit">Ingresar</button>
+            <button type="button"  onclick="iniciar_sesion();">Ingresar</button>
             <div id="errorMessage" class="error-message"></div>
         </form>
     </div>
+    <script src="<?= BASE_URL; ?>view/function/user.js"></script>
 
 </body>
-</html>
+</html> 
+
