@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Huber Araujo</title>
+  <title>Cintia</title>
 
   <link rel="stylesheet" href="<?php echo BASE_URL; ?>view/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
@@ -21,7 +21,7 @@
 
     /* Estilo de barra de navegación */
     .navbar {
-      background-color: #0d6efd !important;
+      background-color: #e49ed2ff !important;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
     }
 
@@ -103,6 +103,12 @@
             <li class="nav-item">
               <a class="nav-link" href="<?= BASE_URL ?>clientes-new">
                 <i class="bi bi-people"></i> Clients
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="<?= BASE_URL ?>vista-producto">
+                <i class="bi bi-people"></i> vista-producto
               </a>
             </li>
 

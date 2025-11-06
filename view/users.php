@@ -1,13 +1,14 @@
 <div class="container mt-4">
   <div class="card shadow-lg border-0 rounded-3">
-    <div class="card-header text-white text-center fw-semibold fs-5" style="background-color: #0d6efd;">
-      <i class="bi bi-people-fill me-2"></i> LISTA DE USUARIOS
+    
+    <div class="card-header text-white text-center fw-semibold fs-5" style="background-color: #1b0d18ff;">
+      <i class=""></i> LISTA DE USUARIOS
     </div>
 
     <div class="card-body p-0">
       <div class="table-responsive">
         <table class="table table-hover align-middle text-center mb-0">
-          <thead class="text-white" style="background-color: #0d6efd;">
+          <thead class="text-white" style="background-color: #e799d0ff;">
             <tr>
               <th scope="col">N°</th>
               <th scope="col">DNI</th>
