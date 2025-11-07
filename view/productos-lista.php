@@ -1,4 +1,7 @@
-<div class="container mt-5">
+<div class="container">
+    <a href="<?= BASE_URL ?>new-product" class="btn btn-primary">Nuevo +</a>
+    <br><br>
+
   <div class="card shadow-lg border-0">
     <div class="card-header bg-primary text-white text-center fs-5 fw-bold">
       <i class="bi bi-box-seam text-warning me-2"></i> Lista de Productos
@@ -7,9 +10,10 @@
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-hover align-middle text-center table-bordered">
+
           <thead class="table-primary">
             <tr>
-              <th><i class="bi bi-hash"></i> Nro</th>
+              <th><i class=""></i> Nro</th>
               <th><i class="bi bi-upc-scan"></i> Código</th>
               <th><i class="bi bi-bag"></i> Nombre</th>
               <th><i class="bi bi-cash-coin"></i> Precio</th>

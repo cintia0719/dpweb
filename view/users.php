@@ -1,10 +1,11 @@
 <div class="container mt-4">
+  <a href="<?= BASE_URL ?>new-user" class="btn btn-primary">Nuevo +</a>
+    <br><br>
   <div class="card shadow-lg border-0 rounded-3">
-    
     <div class="card-header text-white text-center fw-semibold fs-5" style="background-color: #1b0d18ff;">
       <i class=""></i> LISTA DE USUARIOS
     </div>
-
+    <table class="table table-bordered table-striped">
     <div class="card-body p-0">
       <div class="table-responsive">
         <table class="table table-hover align-middle text-center mb-0">
