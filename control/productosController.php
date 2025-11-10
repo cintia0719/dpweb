@@ -215,3 +215,103 @@ if ($tipo == "eliminar") {
         exit;
     }
 }
+
+
+
+
+
+if ($tipo == "mostrarMisProductos") {
+    $respuesta = array('status' => false, 'msg' => 'fallo el controlador');
+    $productos = $objProducto->mostrarMisProductos();
+    $arrProduct = array();
+    
+    if (count($productos)) {
+        foreach ($productos as $producto) {
+            // Solo obtenemos la categoría que necesitamos
+            $categoria = $objCategoria->ver($producto->id_categoria);
+            $nombreCategoria = ($categoria && property_exists($categoria, 'nombre')) 
+                ? $categoria->nombre 
+                : "Sin categoría";
+
+            // Creamos un objeto simplificado con solo los campos necesarios
+            $productoSimple = new stdClass();
+            $productoSimple->imagen = $producto->imagen;
+            $productoSimple->nombre = $producto->nombre;
+            $productoSimple->precio = $producto->precio;
+            $productoSimple->categoria = $nombreCategoria;
+
+            array_push($arrProduct, $productoSimple);
+        }
+        $respuesta = array('status' => true, 'msg' => '', 'data' => $arrProduct);
+    }
+    
+    header('Content-Type: application/json');
+    echo json_encode($respuesta);
+    exit;
+}
+
+
+
+if ($tipo == "ver_detalle") {
+    $respuesta = array('status' => false, 'msg' => 'Error al obtener detalles');
+    $id_producto = $_GET['id'] ?? 0;
+    
+    if ($id_producto) {
+        $producto = $objProducto->ver($id_producto);
+        if ($producto) {
+            // Obtener categoría
+            $categoria = $objCategoria->ver($producto->id_categoria);
+            $producto->categoria = ($categoria && property_exists($categoria, 'nombre')) 
+                ? $categoria->nombre 
+                : "Sin categoría";
+            
+            $respuesta = array(
+                'status' => true,
+                'msg' => '',
+                'data' => $producto
+            );
+        }
+    }
+    
+    header('Content-Type: application/json');
+    echo json_encode($respuesta);
+    exit;
+}
+
+
+
+if ($tipo == "agregar_carrito") {
+    $respuesta = array('status' => false, 'msg' => 'Error al agregar al carrito');
+    
+    $id_producto = $_POST['id_producto'] ?? 0;
+    $cantidad = $_POST['cantidad'] ?? 1;
+    
+    if ($id_producto) {
+        $producto = $objProducto->ver($id_producto);
+        if ($producto) {
+            // Aquí deberías implementar la lógica del carrito
+            // Por ejemplo, usando sesiones:
+            session_start();
+            if (!isset($_SESSION['carrito'])) {
+                $_SESSION['carrito'] = array();
+            }
+            
+            // Agregar o actualizar cantidad en el carrito
+            $_SESSION['carrito'][$id_producto] = array(
+                'id' => $id_producto,
+                'nombre' => $producto->nombre,
+                'precio' => $producto->precio,
+                'cantidad' => $cantidad
+            );
+            
+            $respuesta = array(
+                'status' => true,
+                'msg' => 'Producto agregado al carrito correctamente'
+            );
+        }
+    }
+    
+    header('Content-Type: application/json');
+    echo json_encode($respuesta);
+    exit;
+}

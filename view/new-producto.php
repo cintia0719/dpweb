@@ -10,7 +10,7 @@
 
         <div class="mb-3 row">
           <label for="codigo" class="col-sm-2 col-form-label ">
-            <i class="bi bi-upc text-primary"></i> Código
+            <i class=" text-primary"></i> Código
           </label>
           <div class="col-sm-10">
             <input type="text" class="form-control" id="codigo" name="codigo" required>
@@ -19,7 +19,7 @@
 
         <div class="mb-3 row">
           <label for="nombre" class="col-sm-2 col-form-label ">
-            <i class="bi bi-tag"></i> Nombre
+            <i class=""></i> Nombre
           </label>
           <div class="col-sm-10">
             <input type="text" class="form-control" id="nombre" name="nombre" required>
@@ -28,7 +28,7 @@
 
         <div class="mb-3 row">
           <label for="detalle" class="col-sm-2 col-form-label ">
-            <i class="bi bi-card-text"></i> Detalle
+            <i class=""></i> Detalle
           </label>
           <div class="col-sm-10">
             <input type="text" class="form-control" id="detalle" name="detalle" required>
@@ -37,7 +37,7 @@
 
         <div class="mb-3 row">
           <label for="precio" class="col-sm-2 col-form-label ">
-            <i class="bi bi-currency-dollar"></i> Precio
+            <i class=""></i> Precio
           </label>
           <div class="col-sm-10">
             <input type="number" step="0.01" class="form-control" id="precio" name="precio" required>
@@ -46,7 +46,7 @@
 
         <div class="mb-3 row">
           <label for="stock" class="col-sm-2 col-form-label ">
-            <i class="bi bi-stack"></i> Stock
+            <i class=""></i> Stock
           </label>
           <div class="col-sm-10">
             <input type="number" class="form-control" id="stock" name="stock" required>
@@ -55,7 +55,7 @@
 
         <div class="mb-3 row">
           <label for="id_categoria" class="col-sm-2 col-form-label ">
-            <i class="bi bi-list"></i> Categoría
+            <i class=""></i> Categoría
           </label>
           <div class="col-sm-10">
             <select class="form-select" id="id_categoria" name="id_categoria" required>
@@ -66,7 +66,7 @@
 
         <div class="mb-3 row">
           <label for="fecha_vencimiento" class="col-sm-2 col-form-label ">
-            <i class="bi bi-calendar-event"></i> Vencimiento
+            <i class=""></i> Vencimiento
           </label>
           <div class="col-sm-10">
             <input type="date" class="form-control" id="fecha_vencimiento" name="fecha_vencimiento" required>
@@ -75,7 +75,7 @@
 
         <div class="mb-3 row">
           <label for="imagen" class="col-sm-2 col-form-label ">
-            <i class="bi bi-image"></i> Imagen
+            <i class=""></i> Imagen
           </label>
           <div class="col-sm-10">
             <input type="file" class="form-control" id="imagen" name="imagen" accept="">
@@ -84,7 +84,7 @@
 
         <div class="mb-3 row">
           <label for="id_proveedor" class="col-sm-2 col-form-label ">
-            <i class="bi bi-truck"></i> Proveedor
+            <i class=""></i> Proveedor
           </label>
           <div class="col-sm-10">
             <select class="form-select" id="id_proveedor" name="id_proveedor" required>

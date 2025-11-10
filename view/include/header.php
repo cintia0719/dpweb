@@ -107,8 +107,8 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="<?= BASE_URL ?>vista-producto">
-                <i class="bi bi-people"></i> vista-producto
+              <a class="nav-link" href="<?= BASE_URL ?>productos">
+                <i class="bi bi-people"></i> productos
               </a>
             </li>
 

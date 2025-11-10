@@ -1,5 +1,6 @@
 <div class="container">
-    <a href="<?= BASE_URL ?>new-product" class="btn btn-primary">Nuevo +</a>
+  <br>
+    <a href="<?= BASE_URL ?>productos" class="btn btn-primary">Nuevo +</a>
     <br><br>
 
   <div class="card shadow-lg border-0">
@@ -14,14 +15,14 @@
           <thead class="table-primary">
             <tr>
               <th><i class=""></i> Nro</th>
-              <th><i class="bi bi-upc-scan"></i> Código</th>
-              <th><i class="bi bi-bag"></i> Nombre</th>
-              <th><i class="bi bi-cash-coin"></i> Precio</th>
-              <th><i class="bi bi-box2"></i> Stock</th>
-              <th><i class="bi bi-tags"></i> Categoría</th>
-              <th><i class="bi bi-truck"></i> Proveedor</th>
-              <th><i class="bi bi-calendar-date"></i> Vencimiento</th>
-              <th><i class="bi bi-gear"></i> Acciones</th>
+              <th><i class=""></i> Código</th>
+              <th><i class=""></i> Nombre</th>
+              <th><i class=""></i> Precio</th>
+              <th><i class=""></i> Stock</th>
+              <th><i class=""></i> Categoría</th>
+              <th><i class=""></i> Proveedor</th>
+              <th><i class=""></i> Vencimiento</th>
+              <th><i class=""></i> Acciones</th>
             </tr>
           </thead>
           <tbody id="content_productos">
