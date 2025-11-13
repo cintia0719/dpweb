@@ -22,6 +22,7 @@
               <th><i class=""></i> Categoría</th>
               <th><i class=""></i> Proveedor</th>
               <th><i class=""></i> Vencimiento</th>
+              <th><i class=""></i> Codigo Barra</th>
               <th><i class=""></i> Acciones</th>
             </tr>
           </thead>
@@ -35,3 +36,4 @@
 </div>
 
 <script src="<?php echo BASE_URL; ?>view/function/producto.js"></script>
+<script src="<?php echo BASE_URL; ?>view/function/JsBarcode.all.min.js"></script>

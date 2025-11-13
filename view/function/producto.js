@@ -107,15 +107,28 @@ async function view_producto() {
                     <td>${producto.categoria || ''}</td>
                     <td>${producto.proveedor || ''}</td>
                     <td>${producto.fecha_vencimiento || ''}</td>
+                    <td><svg id="barcode${producto.id}"></svg></td>
                     <td>
                         <a href="${base_url}productos-edit/${producto.id}" class="btn btn-primary">Editar</a>
                         <button onclick="eliminar(` + producto.id + `)" class="btn btn-danger">Eliminar</button>
                     </td>
                 </tr>`;
+
+                document.getElementById('content_productos').innerHTML = html;
+                
             });
-            document.getElementById('content_productos').innerHTML = html;
+            json.data.forEach(producto => {
+                JsBarcode("#barcode" + producto.id, ""+producto.codigo, {
+                    Width:2,
+                    lineColor: "rgba(20, 19, 20, 1)",
+                    height: 40
+                }) 
+                
+            });
+
         } else {
             document.getElementById('content_productos').innerHTML = '<tr><td colspan="9">No hay productos disponibles</td></tr>';
+
         }
     } catch (error) {
         console.error("Error al cargar productos:", error);
@@ -357,7 +370,7 @@ async function listar_productos_venta() {
             json.data.forEach(producto => {
                 let producto_list = ``;
                 producto_list += `<div class="card m-2 col-12">
-                                <img src="${base_url+producto.imagen}" alt="" width="100%" height="150px">
+                                <img src="${base_url + producto.imagen}" alt="" width="100%" height="150px">
                                 <p class="card-text">${producto.nombre}</p>
                                 <p>Precio: ${producto.precio}</p>
                                 <p>Stock: ${producto.stock}</p>
