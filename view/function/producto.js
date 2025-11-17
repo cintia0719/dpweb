@@ -302,14 +302,18 @@ async function cargar_proveedores() {
 
 async function viewMisProducts() {
     try {
-        let respuesta = await fetch(base_url + 'control/productosController.php?tipo=mostrarMisProductos', {
+        let dato = document.getElementById('busqueda_venta').value;
+        const datos = new FormData();
+        datos.append('dato', dato);
+        let respuesta = await fetch(base_url + 'control/productosController.php?tipo=buscar_producto_venta', {
             method: 'POST',
             mode: 'cors',
-            cache: 'no-cache'
+            cache: 'no-cache',
+            body: datos
         });
         if (!respuesta.ok) throw new Error(`HTTP error! status: ${respuesta.status}`);
         let json = await respuesta.json();
-
+        
         let html = '';
         if (json.status && json.data && json.data.length > 0) {
             json.data.forEach(producto => {
@@ -356,7 +360,40 @@ if (document.getElementById('productos_grid')) {
 }
 
 
-async function listar_productos_venta() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*async function listar_productos_venta() {
     try {
         let respuesta = await fetch(base_url + 'control/ProductoController.php?tipo=ver_productos', {
             method: 'POST',
@@ -390,4 +427,4 @@ async function listar_productos_venta() {
 }
 if (document.getElementById('productos_venta')) {
     listar_productos_venta();
-}
+}*/

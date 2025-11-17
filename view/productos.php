@@ -11,6 +11,9 @@ $base = defined('BASE_URL') ? BASE_URL : '/'; // ajustar según tu proyecto
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Busqueda de Productos</h5>
+                <div class="col-md-6">
+                    <input type="text" class="form-control col-md-12" placeholder="buscar producto por codigo o nombre" id="busqueda_venta" onkeyup="viewMisProducts();">
+                </div>
 
                 <div class="row container-fluid" id="productos_venta">
                     <!--<div class="card m-2 col-3">
