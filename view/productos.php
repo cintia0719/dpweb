@@ -12,7 +12,11 @@ $base = defined('BASE_URL') ? BASE_URL : '/'; // ajustar según tu proyecto
             <div class="card-body">
                 <h5 class="card-title">Busqueda de Productos</h5>
                 <div class="col-md-6">
-                    <input type="text" class="form-control col-md-12" placeholder="buscar producto por codigo o nombre" id="busqueda_venta" onkeyup="viewMisProducts();">
+                    <input type="text" class="form-control col-md-12" 
+                    placeholder="buscar producto por codigo o nombre" id="busqueda_venta" onkeyup="viewMisProducts();">
+                    <input type="hidden" id="id_producto_venta">
+                    <input type="hidden" id="producto_precio_venta">
+                    <input type="hidden" id="producto_cantidad_venta" value="1">
                 </div>
 
                 <div class="row container-fluid" id="productos_venta">
@@ -74,12 +78,16 @@ $base = defined('BASE_URL') ? BASE_URL : '/'; // ajustar según tu proyecto
     </div>
 </div>
 
+<script src="<?php echo BASE_URL; ?>view/function/producto.js"></script>
+<script src="<?php echo BASE_URL; ?>view/function/venta.js"></script>
 <script>
-    var base_url = '<?php echo $base; ?>';
+    let input = document.getElementById("busqueda_venta");
+    input.addEventListener('keydown', (event) =>{
+        if (event.key == 'Enter') {
+            agregar_producto_temporal();
+        }
+    })
 </script>
-<script src="<?php echo $base; ?>view/function/producto.js"></script>
-<script src="<?php echo $base; ?>view/function/venta.js"></script>
-
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 

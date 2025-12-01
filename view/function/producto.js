@@ -115,15 +115,15 @@ async function view_producto() {
                 </tr>`;
 
                 document.getElementById('content_productos').innerHTML = html;
-                
+
             });
             json.data.forEach(producto => {
-                JsBarcode("#barcode" + producto.id, ""+producto.codigo, {
-                    Width:2,
+                JsBarcode("#barcode" + producto.id, "" + producto.codigo, {
+                    Width: 2,
                     lineColor: "rgba(20, 19, 20, 1)",
                     height: 40
-                }) 
-                
+                })
+
             });
 
         } else {
@@ -313,7 +313,7 @@ async function viewMisProducts() {
         });
         if (!respuesta.ok) throw new Error(`HTTP error! status: ${respuesta.status}`);
         let json = await respuesta.json();
-        
+
         let html = '';
         if (json.status && json.data && json.data.length > 0) {
             json.data.forEach(producto => {
@@ -341,7 +341,14 @@ async function viewMisProducts() {
                             </div>
                         </div>
                     </div>
+                    
                 `;
+                let id = document.getElementById('id_producto_venta');
+                let precio = document.getElementById('producto_precio_venta');
+                let cantidad = document.getElementById('producto_cantidad_venta');
+                id.value = producto.id;
+                precio.value = producto.precio;
+                cantidad.value = 1;
             });
         } else {
             html = '<div class="col-12"><div class="alert alert-info mb-0">No hay productos disponibles</div></div>';
@@ -352,7 +359,10 @@ async function viewMisProducts() {
         console.error("Error al cargar productos :", error);
         const container = document.getElementById('productos_grid');
         if (container) container.innerHTML = '<div class="col-12"><div class="alert alert-danger mb-0">Error al cargar los productos</div></div>';
+
+
     }
+
 }
 
 if (document.getElementById('productos_grid')) {
