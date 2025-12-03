@@ -21,23 +21,21 @@ class VentaModel
         $sql = $this->conexion->query($consulta);
         return $sql;
     }
-    public function buscarTemporal($id_producto){
+    public function buscarTemporales()
+    {
         $arr_temporal = array();
-        $consulta = "SELECT * FROM temporal_venta WHERE id_producto='$id_producto'";
+        $consulta = "SELECT * FROM temporal_venta";
         $sql = $this->conexion->query($consulta);
         while ($objeto = $sql->fetch_object()) {
             array_push($arr_temporal, $objeto);
         }
         return $arr_temporal;
     }
-    public function buscarTemporales(){
-        $arr_temporal = array();
-        $consulta = "SELECT * FROM temporal_venta WHERE id_producto=''";
+    public function buscarTemporal($id_producto)
+    {
+        $consulta = "SELECT * FROM temporal_venta WHERE id_producto='$id_producto'";
         $sql = $this->conexion->query($consulta);
-        while ($objeto = $sql->fetch_object()) {
-            array_push($arr_temporal, $objeto);
-        }
-        return $arr_temporal;
+        return $sql->fetch_object();
     }
      public function eliminarTemporal($id){
         $consulta = "DELETE FROM temporal_venta WHERE id='$id'";
