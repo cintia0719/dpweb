@@ -84,7 +84,7 @@ $base = defined('BASE_URL') ? BASE_URL : '/'; // ajustar según tu proyecto
     let input = document.getElementById("busqueda_venta");
     input.addEventListener('keydown', (event) =>{
         if (event.key == 'Enter') {
-            agregar_producto_temporal();
+            agregar_producto_temporal();  
         }
     })
 </script>

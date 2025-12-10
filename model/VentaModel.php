@@ -49,5 +49,25 @@ class VentaModel
     }
 
     //-----------------VENTAS REGISTRADAS (OFICIALES)
+
+    public function mostrarProductosTemporal()
+    {
+        $arr_temporal = array();
+        $consulta = "SELECT t.*, p.nombre, p.precio as precio_real 
+                 FROM temporal_venta t
+                 INNER JOIN producto p ON p.id = t.id_producto";
+        $sql = $this->conexion->query($consulta);
+        while ($objeto = $sql->fetch_object()) {
+            array_push($arr_temporal, $objeto);
+        }
+        return $arr_temporal;
+    }
+
+    public function verTemporal($id)
+    {
+        $consulta = "SELECT * FROM temporal_venta WHERE id = '$id'";
+        $sql = $this->conexion->query($consulta);
+        return $sql->fetch_object();
+    }
 }
 

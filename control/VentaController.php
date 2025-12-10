@@ -24,5 +24,43 @@ if ($tipo == "registrarTemporal") {
     }
     echo json_encode($respuesta);
 
+
+}
+
+if ($tipo == "ver") {
+    $respuesta = array('status' => false, 'msg' => '');
+    $id_producto = $_POST['id_producto'];
+    $producto = $objVenta->verTemporal($id_producto);
+    if ($producto) {
+        $respuesta['status'] = true;
+        $respuesta['data'] = $producto;
+    } else {
+        $respuesta['msg'] = "Error, producto no encontrado";
+    }
+    echo json_encode($respuesta);
+}
+
+
+
+if ($tipo == "listarTemporal") {
+    $temporales = $objVenta->mostrarProductosTemporal();
+    $respuesta = array('status' => true,'data' => $temporales);
+    echo json_encode($respuesta);
+}
+
+
+
+if ($tipo == "eliminar") {
+    $id = $_POST['id'];
+    //$delete = $objVenta->eliminarTemporalVenta($id);
+
+    if ($delete) {
+        $respuesta['status'] = true;
+        $respuesta['msg'] = "Producto eliminado";
+    } else {
+        $respuesta['msg'] = "Error al eliminar";
+    }
+
+    echo json_encode($respuesta);
 }
 ?>
