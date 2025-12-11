@@ -21,6 +21,7 @@ console.log(productos_venta);
 
 console.log(productos_venta);
 
+// Función para agregar un producto al carrito de venta
 async function agregar_producto_temporal() {
     let id = document.getElementById('id_producto_venta').value;
     let precio = document.getElementById('producto_precio_venta').value;
@@ -44,7 +45,9 @@ async function agregar_producto_temporal() {
     }else{
         alert("el producto fue actualizado");
     }
-    
+     if (typeof actualizarCarrito === 'function') actualizarCarrito();
+        
+
     } catch (error) {
         console.log("error en agregar producto temporal" + error);
     }
@@ -99,10 +102,9 @@ async function actualizarCarrito() {
                     <td>${p.precio}</td>
                     <td>${subtotal.toFixed(2)}</td>
                     <td>
-                        <button onclick="eliminar_temporal(${p.id})" class="btn btn-danger btn-sm">
-    Eliminar
-</button>
-
+                        <button onclick="eliminar_temporal(${p.id})" class="btn btn-sm btn-danger">
+                             <i class="bi bi-trash"></i>
+                        </button>
                     </td>
                 </tr>`;
             });
@@ -125,4 +127,3 @@ async function actualizarCarrito() {
 }
 
 document.addEventListener('DOMContentLoaded', actualizarCarrito);
-

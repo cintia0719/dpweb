@@ -27,6 +27,7 @@ if ($tipo == "registrarTemporal") {
 
 }
 
+
 if ($tipo == "ver") {
     $respuesta = array('status' => false, 'msg' => '');
     $id_producto = $_POST['id_producto'];
@@ -52,15 +53,17 @@ if ($tipo == "listarTemporal") {
 
 if ($tipo == "eliminar") {
     $id = $_POST['id'];
-    //$delete = $objVenta->eliminarTemporalVenta($id);
+    $delete = $objVenta->eliminarTemporal($id);
 
     if ($delete) {
         $respuesta['status'] = true;
         $respuesta['msg'] = "Producto eliminado";
     } else {
+        $respuesta['status'] = false;
         $respuesta['msg'] = "Error al eliminar";
     }
 
     echo json_encode($respuesta);
 }
+
 ?>
