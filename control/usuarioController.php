@@ -150,6 +150,30 @@ if($tipo == "eliminar"){
     }
 }
 
+if ($tipo == "buscar_por_dni") {
+    $dni = $_POST['dni'] ?? '';
+    $respuesta = array('status' => false, 'msg' => 'DNI requerido');
+    if ($dni !== '') {
+        $persona = $objPersona->buscarPersonaPorNroIdentidad($dni);
+        if ($persona && isset($persona->id)) {
+            // Solo devolver los campos necesarios
+            $respuesta = array(
+                'status' => true,
+                'msg' => 'Cliente encontrado',
+                'data' => array(
+                    'id' => $persona->id,
+                    'razon_social' => $persona->razon_social
+                )
+            );
+        } else {
+            $respuesta = array('status' => false, 'msg' => 'Cliente no encontrado');
+        }
+    }
+    header('Content-Type: application/json');
+    echo json_encode($respuesta);
+    exit;
+}
+
 if ($tipo == "mostrar_clientes") {
     $usuarios = $objPersona->mostrarClientes();
     $respuesta = array();
