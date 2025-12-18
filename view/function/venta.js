@@ -59,7 +59,7 @@ async function listar_productos_venta() {
     }
 }
 
-async function agregar_producto_temporal(id_product = 0, price = 0, cant = 1){
+async function agregar_producto_temporal(id_product = 0, price = 0, cant = 1) {
     let id, precio, cantidad;
     if (!id_product) {
         id = document.getElementById('id_producto_venta')?.value;
