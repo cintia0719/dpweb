@@ -265,3 +265,5 @@ async function registrarVenta() {
         console.log("error al registrar venta " + error);
     }
 }
+
+//-------
