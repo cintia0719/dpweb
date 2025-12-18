@@ -317,13 +317,14 @@ async function viewMisProducts() {
         let html = '';
         if (json.status && json.data && json.data.length > 0) {
             json.data.forEach(producto => {
-                // Ajusta campo 'imagen' al nombre real que devuelve tu API
-                let imgSrc = producto.imagen ? (base_url + producto.imagen) : (base_url + 'uploads/productos/no-image.png');
+                // Ajusta campo 'imagen' al nombre real que devuelve tu API. Usar imagen por defecto existente si falta.
+                let defaultImg = base_url + 'uploads/productos/img01.jpg';
+                let imgSrc = producto.imagen ? (base_url + producto.imagen) : defaultImg;
 
                 html += `
                     <div class="col-6 col-sm-4 col-md-3">
                          <div class="card mb-3 product-card">
-                             <img src="${imgSrc}" class="card-img-top" alt="${producto.nombre || ''}" style="height:140px;object-fit:cover;">
+                             <img src="${imgSrc}" class="card-img-top" alt="${producto.nombre || ''}" style="height:140px;object-fit:cover;" onerror="this.onerror=null;this.src='${defaultImg}';">
                                 <div class="card-body p-2">
                                     <p class="mb-1 small text-truncate">${producto.nombre || ''}</p>
                                     <p class="mb-1"><strong>Precio:</strong> ${producto.precio || '0'}</p>

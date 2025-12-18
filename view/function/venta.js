@@ -35,11 +35,12 @@ async function listar_productos_venta() {
         let html = '';
         if (json.status && Array.isArray(json.data) && json.data.length > 0) {
             json.data.forEach(producto => {
-                const imgSrc = producto.imagen ? (base_url + producto.imagen) : (base_url + 'uploads/productos/no-image.png');
+                const defaultImg = base_url + 'uploads/productos/img01.jpg';
+                const imgSrc = producto.imagen ? (base_url + producto.imagen) : defaultImg;
                 html += `
                     <div class="card m-2 col-12 col-sm-6 col-md-3">
                         <div class="card-body p-2">
-                            <img src="${imgSrc}" alt="${producto.nombre || ''}" width="100%" height="120" style="object-fit:cover;"/>
+                            <img src="${imgSrc}" alt="${producto.nombre || ''}" width="100%" height="120" style="object-fit:cover;" onerror="this.onerror=null;this.src='${defaultImg}';"/>
                             <p class="card-text mb-1 text-truncate" title="${producto.nombre || ''}">${producto.nombre || ''}</p>
                             <small class="text-muted">S/. ${producto.precio || '0.00'}</small>
                             <div class="d-grid mt-2">
