@@ -168,7 +168,7 @@ async function eliminarTemporal(id) {
     try {
         const datos = new FormData();
         datos.append('id', id);
-        let respuesta = await fetch(base_url + 'control/VentaController.php?tipo=eliminar_temporal', {
+        let respuesta = await fetch(base_url + 'control/VentaController.php?tipo=eliminar_temporal',{
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
@@ -185,7 +185,7 @@ async function eliminarTemporal(id) {
 
 async function act_subt_general() {
     try {
-        let respuesta = await fetch(base_url + 'control/VentaController.php?tipo=listar_venta_temporal', {
+        let respuesta = await fetch(base_url + 'control/VentaController.php?tipo=listar_venta_temporal',{
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache'
@@ -215,7 +215,7 @@ async function buscar_cliente_venta() {
     try {
         const datos = new FormData();
         datos.append('dni', dni);
-        let respuesta = await fetch(base_url + 'control/usuarioController.php?tipo=buscar_por_dni', {
+        let respuesta = await fetch(base_url + 'control/usuarioController.php?tipo=buscar_por_dni',{
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
@@ -249,7 +249,7 @@ async function registrarVenta() {
         datos.append('id_cliente', id_cliente);
         datos.append('fecha_venta', fecha_venta);
 
-        let respuesta = await fetch(base_url + 'control/VentaController.php?tipo=registrar_venta', {
+        let respuesta = await fetch(base_url + 'control/VentaController.php?tipo=registrar_venta',{
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',

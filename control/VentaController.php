@@ -61,32 +61,72 @@ if ($tipo == "eliminar_temporal") {
     echo json_encode($respuesta);
 }
 
-if ($tipo == "registrar_venta") {
+if ($tipo === "registrar_venta") {
+
     session_start();
+
+    if (!isset($_SESSION['ventas_id'])) {
+        echo json_encode([
+            'status' => false,
+            'msg' => 'Sesión expirada o usuario no autenticado'
+        ]);
+        exit;
+    }
+
+    if (!isset($_POST['id_cliente'], $_POST['fecha_venta'])) {
+        echo json_encode([
+            'status' => false,
+            'msg' => 'Datos incompletos'
+        ]);
+        exit;
+    }
+
     $id_cliente = $_POST['id_cliente'];
     $fecha_venta = $_POST['fecha_venta'];
     $id_vendedor = $_SESSION['ventas_id'];
-    $ultima_venta = $objVenta->buscar_ultima_venta();
-    //Lógica para registrar la venta
-    $respuesta = array('status' => false, 'msg' => 'fallo el controlador');
-    if ($ultima_venta) {
-        $correlativo = $ultima_venta->codigo + 1;
-    }else {
-        $correlativo = 1;
+
+    $ultima = $objVenta->buscar_ultima_venta();
+    $codigo = $ultima ? $ultima->codigo + 1 : 1;
+
+    $venta_id = $objVenta->registrar_venta(
+        $codigo,
+        $fecha_venta,
+        $id_cliente,
+        $id_vendedor
+    );
+
+    if (!$venta_id) {
+        echo json_encode([
+            'status' => false,
+            'msg' => 'Error al registrar venta'
+        ]);
+        exit;
     }
-    //Registrar la venta oficial
-    $venta = $objVenta->registrar_venta($correlativo, $fecha_venta, $id_cliente, $id_vendedor);
-    if ($venta) {
-        //Registrar los detalles de la venta
-        $temporales = $objVenta->buscarTemporales();
-        foreach ($temporales as $temporal) {
-            $objVenta->registrar_detalle_venta($venta, $temporal->id_producto, $temporal->precio, $temporal->cantidad);
-        }
-        //Eliminar los temporales
-        $objVenta->eliminarTemporales();
-        $respuesta = array('status' => true, 'msg' => 'venta registrada con exito');
-    } else {
-        $respuesta = array('status' => false, 'msg' => 'error al registrar la venta');
+
+    $temporales = $objVenta->buscarTemporales();
+
+    if (!$temporales || count($temporales) === 0) {
+        echo json_encode([
+            'status' => false,
+            'msg' => 'No hay productos en la venta'
+        ]);
+        exit;
     }
-    echo json_encode($respuesta);
+
+    foreach ($temporales as $t) {
+        $objVenta->registrar_detalle_venta(
+            $venta_id,
+            $t->id_producto,
+            $t->precio,
+            $t->cantidad
+        );
+    }
+
+    $objVenta->eliminarTemporales();
+
+    echo json_encode([
+        'status' => true,
+        'msg' => 'Venta registrada correctamente'
+    ]);
+    exit;
 }
